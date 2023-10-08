@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Load-Balancer | load-balancer</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Load-Balancer" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://singhmehtab.github.io/load-balancer/" />
+<meta property="og:url" content="https://singhmehtab.github.io/load-balancer/" />
+<meta property="og:site_name" content="load-balancer" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Load-Balancer" />
+<meta name="google-site-verification" content="xmPCtvNbiPDuNCKYBWRAAsb0BFbHtL-qWoEJM5olGaE" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","headline":"Load-Balancer","name":"load-balancer","url":"https://singhmehtab.github.io/load-balancer/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/load-balancer/assets/css/style.css?v=5bc172bcf2e627c99bc2b8a6612a27cd9c5ef1ff">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/load-balancer/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="https://singhmehtab.github.io/load-balancer/">load-balancer</a></h1>
+      
+
+      <h1 id="load-balancer">Load-Balancer</h1>
+
+<p>This repo is a configurable load balancer written in java.
+For now, only round robin algorithm has been implemented. For storage, in-memory storage has been implemented meaning that if we use more than one instances of this load balancer, they would not share the data with each other regarding the hosts to use for the api request.</p>
+
+<h2 id="features">Features</h2>
+
+<h3 id="algorithm">Algorithm</h3>
+<ol>
+  <li>Round Robin - In this algorithm, hosts are forwarded incoming request in a sequence. When all the hosts are used, request are again forwarded from the first host that was used.</li>
+</ol>
+
+<h3 id="storage">Storage</h3>
+<ol>
+  <li>In-Memory - Storage type is in-memory meaning the heap memory of the java server is used to store data about the hosts used. Using it in a distributed environment would mean that different instances of the load balancers would not share any data of the hosts they are redirecting the requests with each other.</li>
+</ol>
+
+<p>A new central storage type can be used and can be easily implemented by creating a class inside storage directory and implementing ILoadBalancerStorage interface.</p>
+
+<h3 id="health-check">Health Check</h3>
+<p>There is future present which continuously checks for health check of the given urls on a provided health check endpoints. If a server is down, the load balancer will not redirect request to it until it is healthy again.</p>
+
+<h3 id="how-to-use">How to use</h3>
+
+<p>You can use the jar present in the target folder to run the load balancer server with the below given command.</p>
+
+<p><code class="language-plaintext highlighter-rouge">java -jar -DApp.config.file=application.properties load-balancer-0.0.1-SNAPSHOT.jar</code></p>
+
+<p>Example of application properties can be found inside resources directory.</p>
+
+<p><code class="language-plaintext highlighter-rouge">print.machine.update.info=true</code> This can be turned true to debug. It will give details abut the machines being added and removed from the list of available machines.</p>
+
+<p><code class="language-plaintext highlighter-rouge">print.machines.available.info</code> Use this to print the available machines after every health check.</p>
+
+<p><code class="language-plaintext highlighter-rouge">health.check.time.interval</code> This can be used to input the time after which health of the machines should be checked. It is in milliseconds.</p>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/singhmehtab/load-balancer/edit/main/README.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
